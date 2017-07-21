@@ -5,11 +5,6 @@ import random
 import os
 import string
 import threading
-
-os.system('pip install requests')
-
-
-
 import requests
 
 
