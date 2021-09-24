@@ -1,15 +1,11 @@
-FROM debian:jessie-slim
+FROM python:3.8
 
 RUN apt-get update && \
-    apt-get install -y \
-        python \
-        python-setuptools \
-        ca-certificates && \
+    apt-get install -y ca-certificates && \
     apt-get clean
 
-RUN easy_install requests && \
-    rm -rf /tmp/easy*
-
+RUN pip install requests satella
+WORKDIR /root
 ADD commence_primary_ignition.py /root/commence_primary_ignition.py
 
-CMD ["/usr/bin/python", "/root/commence_primary_ignition.py"]
+CMD ["python", "commence_primary_ignition.py"]
