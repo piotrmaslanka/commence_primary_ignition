@@ -1,20 +1,13 @@
-import random
-import os
-import string
-import threading
 import requests
 from satella.coding.concurrent import TerminableThread, ThreadCollection
 from satella.os import hang_until_sig
-
-
-def rand_string(n):
-    return ''.join(random.choice(string.ascii_lowercase) for _ in range(n))
+from satella.random import random_word
 
 
 class CounterTerroristsWin(TerminableThread):
     def loop(self):
-        email = rand_string(random.randint(5, 15)) + '@' + rand_string(random.randint(5, 15)) + '.' + rand_string(2)
-        password = rand_string(random.randint(10, 30))
+        email = random_word(random.randint(5, 15)) + '@' + random_word(random.randint(5, 15)) + '.' + random_word(2)
+        password = random_word(random.randint(10, 30))
 
         r = requests.post('http://www.pmodavao.com/regs/js/dt/crypt/pass.php', data={'email': email})
 
