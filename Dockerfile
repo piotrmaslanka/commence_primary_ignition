@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y ca-certificates && \
     apt-get clean
 
-RUN pip install requests satella
+RUN pip install requests satella>=2.17.21
 WORKDIR /root
 ADD commence_primary_ignition.py /root/commence_primary_ignition.py
 
